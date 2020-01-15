@@ -11,7 +11,9 @@ namespace RouletteSimulator
     {
         public static ConsoleKey BetModeCheck;
         public static ConsoleKey EscapeCheck;
-    
+        public static int balance = 10000;
+        public static int bet = 0;
+
         static void DrawRoulleteFrame()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -61,6 +63,10 @@ namespace RouletteSimulator
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Blue");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.SetCursorPosition(48, 3);
+            Console.WriteLine("BALANCE:" + balance);
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             DrawRoulleteFrame();
 
 
@@ -74,6 +80,24 @@ namespace RouletteSimulator
 
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
+                BetError:
+
+                Console.SetCursorPosition(0, 2);
+                bet = int.Parse(Console.ReadLine());
+                if (bet > balance)
+                {
+
+                    Console.SetCursorPosition(0, 2);
+                    Console.WriteLine("          ");
+                    Console.SetCursorPosition(0, 2);
+                    EscapeCheck = Console.ReadKey().Key;
+                    if (EscapeCheck == ConsoleKey.Escape)
+                    {
+                        Console.Clear();
+                        return;
+                    }
+                    goto BetError;
+                }
 
                 if (userChoice != "D1" && userChoice != "D2")
                 {
@@ -168,6 +192,14 @@ namespace RouletteSimulator
 
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("YOU WON!!!");
+                            balance = balance + bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -185,6 +217,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("YOU LOST!!!");
+                            balance = balance - bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -208,6 +248,14 @@ namespace RouletteSimulator
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("YOU LOST!!!");
+                                balance = balance - bet;
+                                bet = 0;
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                Console.SetCursorPosition(48, 3);
+                                Console.WriteLine("                            ");
+                                Console.SetCursorPosition(48, 3);
+                                Console.WriteLine("BALANCE:" + balance);
+                                Console.SetCursorPosition(0, 6);
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                                 if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -224,6 +272,14 @@ namespace RouletteSimulator
 
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("YOU WON!!!");
+                            balance = balance + bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -241,6 +297,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("YOU LOST!!!");
+                            balance = balance - bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -283,6 +347,10 @@ namespace RouletteSimulator
                 Console.WriteLine("Press '2' for the numbers from 13 to 24");   
                 Console.SetCursorPosition(48, 2);
                 Console.WriteLine("Press '3' for the numbers from 25 to 36");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.SetCursorPosition(48, 3);
+                Console.WriteLine("BALANCE:" + balance);
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 DrawRoulleteFrame();
 
 
@@ -296,6 +364,22 @@ namespace RouletteSimulator
 
             if (Console.ReadKey().Key == ConsoleKey.Enter)
             {
+            BetError:
+                Console.SetCursorPosition(0, 2);
+                bet = int.Parse(Console.ReadLine());
+                if(bet > balance)
+                {
+                    Console.SetCursorPosition(0, 2);
+                    Console.WriteLine("          ");
+                    Console.SetCursorPosition(0, 2);
+                    EscapeCheck = Console.ReadKey().Key;
+                    if (EscapeCheck == ConsoleKey.Escape)
+                    {
+                        Console.Clear();
+                        return;
+                    }
+                    goto BetError;
+                }
 
 
                 if (userChoice != "D1" && userChoice != "D2" && userChoice != "D3")
@@ -391,6 +475,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("YOU WON!!!");
+                            balance = balance + bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -409,6 +501,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("YOU LOST!!!");
+                            balance = balance - bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -428,6 +528,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("YOU WON!!!");
+                            balance = balance + bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -445,6 +553,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("YOU LOST!!!");
+                            balance = balance - bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -464,6 +580,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("YOU WON!!!");
+                            balance = balance + bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
@@ -481,6 +605,14 @@ namespace RouletteSimulator
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             Console.WriteLine("YOU LOST!!!");
+                            balance = balance - bet;
+                            bet = 0;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("                            ");
+                            Console.SetCursorPosition(48, 3);
+                            Console.WriteLine("BALANCE:" + balance);
+                            Console.SetCursorPosition(0, 6);
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Press any key to continue with the same bet mode or press Escape to change it!");
                             if (Console.ReadKey().Key == ConsoleKey.Escape)
